@@ -1,10 +1,10 @@
 import { BaseCommand } from '@adonisjs/core/build/standalone'
 
-export default class Users extends BaseCommand {
+export default class Book extends BaseCommand {
   /**
    * Command name is used to run the command
    */
-  public static commandName = 'users'
+  public static commandName = 'book'
 
   /**
    * Command description is displayed in the "help" output
@@ -28,8 +28,8 @@ export default class Users extends BaseCommand {
   }
 
   public async run() {
-    const { default: Users } = await import('App/Models/User')
+    const { default: Books } = await import('App/Models/Book')
 
-    this.logger.info(JSON.stringify(await Users.all()))
+    this.logger.info(JSON.stringify(await Books.all()))
   }
 }

@@ -40,7 +40,7 @@ https://docs.adonisjs.com/guides/database/seeders
 
 ## What I would change/improve
 
-- Have a UUID field for all database entries to avoid exposing the primary key to the end user
+- Have a UUID field for all database entries and actions, to avoid exposing the primary key publicly
 - Store authors in a specific Authors table and have a reference author_id in the Books table
 - Store genres in a specific Genres table and create a junction table between Books and Genres so that a book can have many genres
 - Limit the fields being returned from the ORM model querying

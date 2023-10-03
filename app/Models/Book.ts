@@ -12,8 +12,8 @@ export default class Book extends BaseModel {
   @column()
   public author: string
 
-  @column.dateTime()
-  public publicationYear: DateTime
+  @column()
+  public publicationYear: number
 
   @column()
   public genre: string

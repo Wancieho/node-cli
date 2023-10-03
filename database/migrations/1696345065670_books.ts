@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('title')
       table.string('author')
-      table.timestamp('publication_year')
+      table.integer('publication_year')
       table.string('genre')
       table.string('status')
 

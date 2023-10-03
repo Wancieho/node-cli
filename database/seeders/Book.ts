@@ -5,12 +5,34 @@ export default class extends BaseSeeder {
   public async run() {
     await Book.createMany([
       {
-        title: 'virk@adonisjs.com',
-        author: 'secret',
+        title: 'To Kill a Mockingbird',
+        author: 'Harper Lee',
+        publicationYear: 1960,
+        genre: 'Bildungsroman',
       },
       {
-        title: 'romain@adonisjs.com',
-        author: 'supersecret',
+        title: '1984',
+        author: 'George Orwell',
+        publicationYear: 1949,
+        genre: 'Dystopian',
+      },
+      {
+        title: 'Pride and Prejudice',
+        author: 'Jane Austen',
+        publicationYear: 1813,
+        genre: 'Romance',
+      },
+      {
+        title: 'The Great Gatsby',
+        author: 'F. Scott Fitzgerald',
+        publicationYear: 1925,
+        genre: 'Tragedy',
+      },
+      {
+        title: 'The Catcher in the Rye',
+        author: 'J.D. Salinger',
+        publicationYear: 1951,
+        genre: 'Bildungsroman',
       },
     ])
   }

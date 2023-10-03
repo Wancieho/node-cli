@@ -49,3 +49,5 @@ https://docs.adonisjs.com/guides/database/seeders
 - I didn't handle unique and not null fields as I need to do more research on the library (models/migrations etc.)
 - User login/auth so that the UUID can be returned to use for subsequent requests (user actions against books etc.)
 - Get rid of :any in the command querying, but would need to understand the ORM better
+- I'd consider converting the Book command verifyUser() to a utility
+- I'd investigate moving the command query logic into another file/class so that if I wanted to expose the same logic VIA REST as-well, I wouldn't be replicating logic

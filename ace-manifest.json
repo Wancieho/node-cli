@@ -7,10 +7,18 @@
       },
       "commandPath": "./commands/Book",
       "commandName": "book",
-      "description": "",
+      "description": "Returns a list of books checked out by a user if the user ID is specified, otherwise all the books are returned",
       "args": [],
       "aliases": [],
-      "flags": []
+      "flags": [
+        {
+          "name": "checked-out-by-user-id",
+          "propertyName": "checkedOutByUserId",
+          "type": "number",
+          "alias": "cobui",
+          "description": "Find all books checked out by user ID"
+        }
+      ]
     },
     "user": {
       "settings": {
@@ -19,7 +27,7 @@
       },
       "commandPath": "./commands/User",
       "commandName": "user",
-      "description": "A List of users. If no flag is specified then all users will be returned",
+      "description": "Returns a user entry if an ID is specified, otherwise all users are returned",
       "args": [],
       "aliases": [],
       "flags": [

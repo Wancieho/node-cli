@@ -1,4 +1,4 @@
-import { BaseCommand } from '@adonisjs/core/build/standalone'
+import { BaseCommand, flags } from '@adonisjs/core/build/standalone'
 
 export default class Book extends BaseCommand {
   /**
@@ -6,10 +6,14 @@ export default class Book extends BaseCommand {
    */
   public static commandName = 'book'
 
+  @flags.number({ alias: 'cobui', description: 'Find all books checked out by user ID' })
+  public checkedOutByUserId: boolean
+
   /**
    * Command description is displayed in the "help" output
    */
-  public static description = ''
+  public static description =
+    'Returns a list of books checked out by a user if the user ID is specified, otherwise all the books are returned'
 
   public static settings = {
     /**
@@ -27,9 +31,43 @@ export default class Book extends BaseCommand {
     stayAlive: false,
   }
 
-  public async run() {
-    const { default: Books } = await import('App/Models/Book')
+  private async verifyUser() {
+    const { default: User } = await import('App/Models/User')
 
-    this.logger.info(JSON.stringify(await Books.all()))
+    const user = await User.findBy('id', this.checkedOutByUserId)
+
+    if (user) {
+      return true
+    }
+
+    return false
+  }
+
+  public async run() {
+    let response: any = null
+
+    const { default: Book } = await import('App/Models/Book')
+
+    if (this.checkedOutByUserId) {
+      if (!(await this.verifyUser())) {
+        return this.logger.info(`A user with ID ${this.checkedOutByUserId} was not found`)
+      }
+
+      const books = await Book.query().where('checked_out_by_user_id', this.checkedOutByUserId)
+
+      if (books) {
+        response = JSON.stringify(books)
+      }
+
+      if (!books) {
+        response = `No books found checked out by user ID ${this.checkedOutByUserId}`
+      }
+    }
+
+    if (!response) {
+      response = JSON.stringify(await Book.all())
+    }
+
+    this.logger.info(response)
   }
 }

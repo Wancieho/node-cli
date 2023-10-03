@@ -1,4 +1,4 @@
-import { BaseCommand } from '@adonisjs/core/build/standalone'
+import { BaseCommand, flags } from '@adonisjs/core/build/standalone'
 
 export default class User extends BaseCommand {
   /**
@@ -6,10 +6,13 @@ export default class User extends BaseCommand {
    */
   public static commandName = 'user'
 
+  @flags.number({ alias: 'fbi', description: 'Find a user by ID' })
+  public findById: boolean
+
   /**
    * Command description is displayed in the "help" output
    */
-  public static description = ''
+  public static description = `Returns a user entry if an ID is specified. If no flag/ID is specified then all users will be returned`
 
   public static settings = {
     /**
@@ -28,8 +31,27 @@ export default class User extends BaseCommand {
   }
 
   public async run() {
+    let response: any = null
+    let query: any = null
+
     const { default: Users } = await import('App/Models/User')
 
-    this.logger.info(JSON.stringify(await Users.all()))
+    if (this.findById) {
+      query = await Users.findBy('id', this.findById)
+
+      if (query) {
+        response = JSON.stringify(query)
+      }
+
+      if (!query) {
+        response = 'No user found with that ID'
+      }
+    }
+
+    if (!response) {
+      response = JSON.stringify(await Users.all())
+    }
+
+    this.logger.info(response)
   }
 }

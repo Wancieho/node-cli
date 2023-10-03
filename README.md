@@ -10,6 +10,7 @@ https://docs.adonisjs.com/guides/ace-commandline#creating-a-new-command
 
 - node ace make:command Book
 - node ace generate:manifest
+- node ace user --help (specify the help flag to retrieve info about a command)
 
 #### Errors
 
@@ -47,3 +48,4 @@ https://docs.adonisjs.com/guides/database/seeders
 - Create a books_checked_out_by_user table (or some similar name) instead of just storing the user_id of the user who has the book checked out in the Books table (I am aware this is really bad in a relational DB, but I need a quick working solution). This would potentially make the Book `status` field redundant, so I have also replaced it with `checked_out_by_user_id/checkedOutByUserId`
 - I didn't handle unique and not null fields as I need to do more research on the library (models/migrations etc.)
 - User login/auth so that the UUID can be returned to use for subsequent requests (user actions against books etc.)
+- Get rid of :any in the command querying, but would need to understand the ORM better

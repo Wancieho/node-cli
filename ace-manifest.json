@@ -19,10 +19,18 @@
       },
       "commandPath": "./commands/User",
       "commandName": "user",
-      "description": "",
+      "description": "A List of users. If no flag is specified then all users will be returned",
       "args": [],
       "aliases": [],
-      "flags": []
+      "flags": [
+        {
+          "name": "find-by-id",
+          "propertyName": "findById",
+          "type": "number",
+          "alias": "fbi",
+          "description": "Find a user by ID"
+        }
+      ]
     },
     "dump:rcfile": {
       "settings": {},

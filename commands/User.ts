@@ -12,7 +12,7 @@ export default class User extends BaseCommand {
   /**
    * Command description is displayed in the "help" output
    */
-  public static description = `Returns a user entry if an ID is specified. If no flag/ID is specified then all users will be returned`
+  public static description = `Returns a user entry if an ID is specified, otherwise all users are returned`
 
   public static settings = {
     /**
@@ -32,24 +32,23 @@ export default class User extends BaseCommand {
 
   public async run() {
     let response: any = null
-    let query: any = null
 
-    const { default: Users } = await import('App/Models/User')
+    const { default: User } = await import('App/Models/User')
 
     if (this.findById) {
-      query = await Users.findBy('id', this.findById)
+      const user = await User.findBy('id', this.findById)
 
-      if (query) {
-        response = JSON.stringify(query)
+      if (user) {
+        response = JSON.stringify(user)
       }
 
-      if (!query) {
+      if (!user) {
         response = 'No user found with that ID'
       }
     }
 
     if (!response) {
-      response = JSON.stringify(await Users.all())
+      response = JSON.stringify(await User.all())
     }
 
     this.logger.info(response)

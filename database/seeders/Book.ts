@@ -15,6 +15,7 @@ export default class extends BaseSeeder {
         author: 'George Orwell',
         publicationYear: 1949,
         genre: 'Dystopian',
+        checkedOutByUserId: 2,
       },
       {
         title: 'Pride and Prejudice',
@@ -27,12 +28,14 @@ export default class extends BaseSeeder {
         author: 'F. Scott Fitzgerald',
         publicationYear: 1925,
         genre: 'Tragedy',
+        checkedOutByUserId: 2,
       },
       {
         title: 'The Catcher in the Rye',
         author: 'J.D. Salinger',
         publicationYear: 1951,
         genre: 'Bildungsroman',
+        checkedOutByUserId: 1,
       },
     ])
   }

@@ -1,12 +1,24 @@
 {
   "commands": {
-    "book": {
+    "books": {
       "settings": {
         "loadApp": true,
         "stayAlive": false
       },
-      "commandPath": "./commands/Book",
-      "commandName": "book",
+      "commandPath": "./commands/Books",
+      "commandName": "books",
+      "description": "",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
+    "user": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/User",
+      "commandName": "user",
       "description": "",
       "args": [],
       "aliases": [],

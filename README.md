@@ -11,6 +11,10 @@ https://docs.adonisjs.com/guides/ace-commandline#creating-a-new-command
 - node ace make:command Book
 - node ace generate:manifest
 
+#### Errors
+
+If you're getting a console error when running a command that uses a model e.g.: `IocLookupException: E_IOC_LOOKUP_FAILED: Cannot resolve "App/Models/Book" namespace from the IoC Container`, you will need to set the `loadApp: true` in your command and then run `node ace generate:manifest`
+
 ### Creating models
 
 https://docs.adonisjs.com/guides/models/introduction#creating-your-first-model

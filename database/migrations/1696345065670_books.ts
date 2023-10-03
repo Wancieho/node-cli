@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('author')
       table.integer('publication_year')
       table.string('genre')
-      table.string('status')
+      table.integer('checked_out_by_user_id')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

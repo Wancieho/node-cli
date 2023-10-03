@@ -36,3 +36,11 @@ https://docs.adonisjs.com/guides/database/seeders
 
 - node ace make:seeder Book
 - node ace db:seed
+
+## What I would change/improve
+
+- Have a UUID field for all database entries to avoid exposing the primary key to the end user
+- Store authors in a specific Authors table and have a reference author_id in the Books table
+- Store genres in a specific Genres table and create a junction table between Books and Genres so that a book can have many genres
+- Limit the fields being returned from the ORM model querying
+- Create a books_checked_out_by_user table (or some similar name) instead of just storing the user_id of the user who has the book checked out in the Books table (I am aware this is really bad in a relational DB, but I need a quick working solution). This would potentially make the Book `status` field redundant, so I have also replaced it with `checked_out_by_user_id/checkedOutByUserId`

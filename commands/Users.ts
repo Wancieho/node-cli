@@ -1,10 +1,10 @@
 import { BaseCommand } from '@adonisjs/core/build/standalone'
 
-export default class User extends BaseCommand {
+export default class Users extends BaseCommand {
   /**
    * Command name is used to run the command
    */
-  public static commandName = 'user'
+  public static commandName = 'users'
 
   /**
    * Command description is displayed in the "help" output
@@ -14,20 +14,22 @@ export default class User extends BaseCommand {
   public static settings = {
     /**
      * Set the following value to true, if you want to load the application
-     * before running the command. Don't forget to call `node ace generate:manifest` 
+     * before running the command. Don't forget to call `node ace generate:manifest`
      * afterwards.
      */
-    loadApp: false,
+    loadApp: true,
 
     /**
      * Set the following value to true, if you want this command to keep running until
-     * you manually decide to exit the process. Don't forget to call 
+     * you manually decide to exit the process. Don't forget to call
      * `node ace generate:manifest` afterwards.
      */
     stayAlive: false,
   }
 
   public async run() {
-    this.logger.info('Hello world!')
+    const { default: Users } = await import('App/Models/User')
+
+    this.logger.info(JSON.stringify(await Users.all()))
   }
 }

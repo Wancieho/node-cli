@@ -12,13 +12,13 @@
       "aliases": [],
       "flags": []
     },
-    "user": {
+    "users": {
       "settings": {
-        "loadApp": false,
+        "loadApp": true,
         "stayAlive": false
       },
-      "commandPath": "./commands/User",
-      "commandName": "user",
+      "commandPath": "./commands/Users",
+      "commandName": "users",
       "description": "",
       "args": [],
       "aliases": [],

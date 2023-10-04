@@ -70,4 +70,4 @@ https://docs.adonisjs.com/guides/database/seeders
 - Get rid of :any in the command querying, but would need to understand the ORM better
 - I'd consider converting the Book command verifyUser() to a utility
 - Improve the logic of the queries folder so that any REST calls can re-use
-- history of checking books in/out
+- History of checking books in/out

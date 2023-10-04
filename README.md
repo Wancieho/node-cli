@@ -25,14 +25,14 @@ https://docs.adonisjs.com/guides/models/introduction#creating-your-first-model
 
 Note: when you modify any models you will manually have to change the related migration as-well.
 
-### Run migrations
+### Creating migrations
 
 https://docs.adonisjs.com/guides/database/migrations
 
 - node ace make:migration books (generate migration after model created)
 - node ace migration:fresh
 
-### Run seeds
+### Creating seeds
 
 https://docs.adonisjs.com/guides/database/seeders
 
@@ -50,4 +50,4 @@ https://docs.adonisjs.com/guides/database/seeders
 - User login/auth so that the UUID can be returned to use for subsequent requests (user actions against books etc.)
 - Get rid of :any in the command querying, but would need to understand the ORM better
 - I'd consider converting the Book command verifyUser() to a utility
-- I'd investigate moving the command query logic into another file/class so that if I wanted to expose the same logic VIA REST as-well, I wouldn't be replicating logic
+- Improve the logic of the queries folder so that any REST calls can re-use

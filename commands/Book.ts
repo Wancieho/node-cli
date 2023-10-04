@@ -1,5 +1,8 @@
 import { BaseCommand, flags } from '@adonisjs/core/build/standalone'
 
+import { checkedOutBy } from 'App/Queries/Book/find'
+import { findById } from 'App/Queries/User/find'
+
 export default class Book extends BaseCommand {
   /**
    * Command name is used to run the command
@@ -7,7 +10,7 @@ export default class Book extends BaseCommand {
   public static commandName = 'book'
 
   @flags.number({ alias: 'cobui', description: 'Find all books checked out by user ID' })
-  public checkedOutByUserId: boolean
+  public checkedOutByUserId: number
 
   /**
    * Command description is displayed in the "help" output
@@ -31,29 +34,17 @@ export default class Book extends BaseCommand {
     stayAlive: false,
   }
 
-  private async verifyUser() {
-    const { default: User } = await import('App/Models/User')
-
-    const user = await User.findBy('id', this.checkedOutByUserId)
-
-    if (user) {
-      return true
-    }
-
-    return false
-  }
-
   public async run() {
     let response: any = null
 
     const { default: Book } = await import('App/Models/Book')
 
     if (this.checkedOutByUserId) {
-      if (!(await this.verifyUser())) {
+      if (!(await findById(this.checkedOutByUserId))) {
         return this.logger.info(`A user with ID ${this.checkedOutByUserId} was not found`)
       }
 
-      const books = await Book.query().where('checked_out_by_user_id', this.checkedOutByUserId)
+      const books = checkedOutBy(this.checkedOutByUserId)
 
       if (books) {
         response = JSON.stringify(books)

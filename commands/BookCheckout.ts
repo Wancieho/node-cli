@@ -1,6 +1,6 @@
 import { BaseCommand, args, flags } from '@adonisjs/core/build/standalone'
 
-import { byUserId } from 'App/Queries/Book/checkouts'
+import { checkout } from 'App/Queries/Book/checkouts'
 
 export default class BookCheckout extends BaseCommand {
   /**
@@ -40,6 +40,6 @@ export default class BookCheckout extends BaseCommand {
       return this.logger.info(`A book ID must be set as a flag --bi or --bookId`)
     }
 
-    this.logger.info(await byUserId(this.bookId, Number(this.userId)))
+    this.logger.info(await checkout(this.bookId, Number(this.userId)))
   }
 }

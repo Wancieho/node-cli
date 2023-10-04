@@ -2,9 +2,27 @@
 
 Built using https://adonisjs.com
 
+## Requirements
+
+- Node
+- MySQL
+
 ## Usage
 
-### Creating CLI commands
+- npm i
+- node ace migration:fresh
+- node ace db:seed
+- node ace --help (to get a list of commands)
+
+### Example usage
+
+- node ace book
+- node ace book --cobui 23
+- node ace user
+- node ace user --id 17
+- node ace book:checkout 17 --bi 3
+
+## Creating CLI commands
 
 https://docs.adonisjs.com/guides/ace-commandline#creating-a-new-command
 
@@ -12,11 +30,11 @@ https://docs.adonisjs.com/guides/ace-commandline#creating-a-new-command
 - node ace generate:manifest
 - node ace user --help (specify the help flag to retrieve info about a command)
 
-#### Errors
+&nbsp;&nbsp;### Errors
 
-If you're getting a console error when running a command that uses a model e.g.: `IocLookupException: E_IOC_LOOKUP_FAILED: Cannot resolve "App/Models/Book" namespace from the IoC Container`, you will need to set the `loadApp: true` in your command and then run `node ace generate:manifest`
+&nbsp;&nbsp;If you're getting a console error when running a command that uses a model e.g.: `IocLookupException: E_IOC_LOOKUP_FAILED: Cannot resolve "App/Models/Book" namespace from the IoC Container`, you will need to set the `loadApp: true` in your command and then run `node ace generate:manifest`
 
-### Creating models
+## Creating models
 
 https://docs.adonisjs.com/guides/models/introduction#creating-your-first-model
 
@@ -25,19 +43,19 @@ https://docs.adonisjs.com/guides/models/introduction#creating-your-first-model
 
 Note: when you modify any models you will manually have to change the related migration as-well.
 
-### Creating migrations
+## Creating migrations
 
 https://docs.adonisjs.com/guides/database/migrations
 
 - node ace make:migration books (generate migration after model created)
-- node ace migration:fresh
+- node ace migration:fresh (run every time after creating a mgiration)
 
-### Creating seeds
+## Creating seeds
 
 https://docs.adonisjs.com/guides/database/seeders
 
 - node ace make:seeder Book
-- node ace db:seed
+- node ace db:seed (run everytime seeds are created or updated)
 
 ## What I would change/improve
 
@@ -51,3 +69,4 @@ https://docs.adonisjs.com/guides/database/seeders
 - Get rid of :any in the command querying, but would need to understand the ORM better
 - I'd consider converting the Book command verifyUser() to a utility
 - Improve the logic of the queries folder so that any REST calls can re-use
+- history of checking books in/out

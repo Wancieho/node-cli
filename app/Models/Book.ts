@@ -19,7 +19,7 @@ export default class Book extends BaseModel {
   public genre: string
 
   @column()
-  public checkedOutByUserId: number
+  public checkedOutByUserId: number | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

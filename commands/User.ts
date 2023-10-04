@@ -6,8 +6,8 @@ export default class User extends BaseCommand {
    */
   public static commandName = 'user'
 
-  @flags.number({ alias: 'fbi', description: 'Find a user by ID' })
-  public findById: boolean
+  @flags.number({ alias: 'id', description: 'Find a user by ID' })
+  public id: boolean
 
   /**
    * Command description is displayed in the "help" output
@@ -35,8 +35,8 @@ export default class User extends BaseCommand {
 
     const { default: User } = await import('App/Models/User')
 
-    if (this.findById) {
-      const user = await User.findBy('id', this.findById)
+    if (this.id) {
+      const user = await User.findBy('id', this.id)
 
       if (user) {
         response = JSON.stringify(user)

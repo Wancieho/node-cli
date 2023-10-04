@@ -1,7 +1,7 @@
 import Book from 'App/Models/Book'
 import { findById } from '../User/find'
 
-export const byUserId = async (bookId: number, userId: number) => {
+export const checkout = async (bookId: number, userId: number) => {
   if (!(await findById(Number(userId)))) {
     return `A user with ID ${userId} was not found`
   }

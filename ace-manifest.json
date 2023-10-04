@@ -20,6 +20,34 @@
         }
       ]
     },
+    "book:checkout": {
+      "settings": {
+        "loadApp": true,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/BookCheckout",
+      "commandName": "book:checkout",
+      "description": "Attempt to checkout a book using a user ID",
+      "args": [
+        {
+          "type": "string",
+          "propertyName": "userId",
+          "name": "userId",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "aliases": [],
+      "flags": [
+        {
+          "name": "book-id",
+          "propertyName": "bookId",
+          "type": "number",
+          "alias": "bi",
+          "description": "Retrieve book data"
+        }
+      ]
+    },
     "user": {
       "settings": {
         "loadApp": true,

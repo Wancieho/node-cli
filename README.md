@@ -21,6 +21,7 @@ Built using https://adonisjs.com
 - node ace user
 - node ace user --id 17
 - node ace book:checkout 17 --bi 3
+- node ace book:check_in --id 3
 
 ## Creating CLI commands
 

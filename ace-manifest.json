@@ -20,6 +20,26 @@
         }
       ]
     },
+    "book:check_in": {
+      "settings": {
+        "loadApp": true,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/BookCheckIn",
+      "commandName": "book:check_in",
+      "description": "Set a book checkout field back to null",
+      "args": [],
+      "aliases": [],
+      "flags": [
+        {
+          "name": "id",
+          "propertyName": "id",
+          "type": "number",
+          "alias": "id",
+          "description": "Set book check out by user ID to null"
+        }
+      ]
+    },
     "book:checkout": {
       "settings": {
         "loadApp": true,
@@ -60,10 +80,10 @@
       "aliases": [],
       "flags": [
         {
-          "name": "find-by-id",
-          "propertyName": "findById",
+          "name": "id",
+          "propertyName": "id",
           "type": "number",
-          "alias": "fbi",
+          "alias": "id",
           "description": "Find a user by ID"
         }
       ]

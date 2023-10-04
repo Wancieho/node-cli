@@ -44,7 +44,7 @@ export default class Book extends BaseCommand {
         return this.logger.info(`A user with ID ${this.checkedOutByUserId} was not found`)
       }
 
-      const books = checkedOutBy(this.checkedOutByUserId)
+      const books = await checkedOutBy(this.checkedOutByUserId)
 
       if (books) {
         response = JSON.stringify(books)
